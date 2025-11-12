@@ -1,5 +1,5 @@
 /**
- *
+ * Frigate ship implementation (length 4).
  */
 package iscteiul.ista.battleship;
 
@@ -8,8 +8,11 @@ public class Frigate extends Ship {
     private static final String NAME = "Fragata";
 
     /**
-     * @param bearing
-     * @param pos
+     * Build a Frigate oriented along the given bearing.
+     *
+     * @param bearing orientation for placement
+     * @param pos     starting reference position
+     * @throws IllegalArgumentException if bearing is invalid
      */
     public Frigate(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Frigate.NAME, bearing, pos);
@@ -29,10 +32,10 @@ public class Frigate extends Ship {
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the fixed size (number of cells) of this ship type.
      *
-     * @see battleship.Ship#getSize()
+     * @return ship size in grid cells
      */
     @Override
     public Integer getSize() {

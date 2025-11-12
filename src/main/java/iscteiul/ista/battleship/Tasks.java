@@ -9,6 +9,10 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Small set of console tasks used for manual testing / exercises.
+ * Methods read input from a Scanner and exercise ship/fleet/game behaviour.
+ */
 public class Tasks {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -52,8 +56,10 @@ public class Tasks {
 
     /**
      * This task tests the building up of fleets
+     *
+     * @param game unused parameter in the task (kept for compatibility)
      */
-    public static void taskB() {
+    public static void taskB(Game game) {
         Scanner in = new Scanner(System.in);
         IFleet fleet = null;
         String command = in.next();
@@ -150,10 +156,10 @@ public class Tasks {
     }
 
     /**
-     * This operation allows the build up of a fleet, given user data
+     * Build a fleet reading ships from the provided scanner.
      *
-     * @param in The scanner to read from
-     * @return The fleet that has been built
+     * @param in the scanner to read ship data from
+     * @return constructed Fleet
      */
     static Fleet buildFleet(Scanner in) {
         assert in != null;
@@ -178,10 +184,10 @@ public class Tasks {
     }
 
     /**
-     * This operation reads data about a ship, build it and returns it
+     * Read a ship specification from the scanner and create it.
      *
-     * @param in The scanner to read from
-     * @return The created ship based on the data that has been read
+     * @param in input scanner
+     * @return created Ship or null when unknown
      */
     static Ship readShip(Scanner in) {
         String shipKind = in.next();
@@ -192,10 +198,10 @@ public class Tasks {
     }
 
     /**
-     * This operation allows reading a position in the map
+     * Read a position (two integers) from the scanner.
      *
-     * @param in The scanner to read from
-     * @return The position that has been read
+     * @param in scanner to read from
+     * @return created Position
      */
     static Position readPosition(Scanner in) {
         int row = in.nextInt();
@@ -204,11 +210,10 @@ public class Tasks {
     }
 
     /**
-     * This operation allows firing a round of shots (three) over a fleet, in the
-     * context of a game
+     * Fire a fixed number of shots (round) using the provided game.
      *
-     * @param in   The scanner to read from
-     * @param game The context game while fleet is being attacked
+     * @param in   scanner for input coordinates
+     * @param game game instance used to fire shots
      */
     static void firingRound(Scanner in, IGame game) {
         for (int i = 0; i < NUMBER_SHOTS; i++) {

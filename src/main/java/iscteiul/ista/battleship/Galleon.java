@@ -1,5 +1,6 @@
 /**
- *
+ * Galleon ship implementation (large, asymmetric shape).
+ * The constructor fills the internal positions according to the selected bearing.
  */
 package iscteiul.ista.battleship;
 
@@ -8,8 +9,12 @@ public class Galleon extends Ship {
     private static final String NAME = "Galeao";
 
     /**
-     * @param bearing
-     * @param pos
+     * Construct a Galleon with the given orientation and reference position.
+     *
+     * @param bearing orientation of the Galleon
+     * @param pos     reference position used to compute occupied cells
+     * @throws NullPointerException     if bearing is null
+     * @throws IllegalArgumentException if the bearing is not supported for placement
      */
     public Galleon(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Galleon.NAME, bearing, pos);
@@ -36,10 +41,10 @@ public class Galleon extends Ship {
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the fixed size (number of cells) of this ship type.
      *
-     * @see battleship.Ship#getSize()
+     * @return ship size in grid cells
      */
     @Override
     public Integer getSize() {

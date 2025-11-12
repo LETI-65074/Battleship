@@ -1,5 +1,5 @@
 /**
- *
+ * Carrack ship implementation (length 3).
  */
 package iscteiul.ista.battleship;
 
@@ -8,8 +8,11 @@ public class Carrack extends Ship {
     private static final String NAME = "Nau";
 
     /**
-     * @param bearing
-     * @param pos
+     * Construct a Carrack oriented along the given bearing.
+     *
+     * @param bearing orientation for placement
+     * @param pos     reference starting position
+     * @throws IllegalArgumentException if bearing is invalid
      */
     public Carrack(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Carrack.NAME, bearing, pos);
@@ -29,10 +32,10 @@ public class Carrack extends Ship {
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the fixed size (number of cells) of this ship type.
      *
-     * @see battleship.Ship#getSize()
+     * @return ship size in grid cells
      */
     @Override
     public Integer getSize() {

@@ -1,5 +1,5 @@
 /**
- *
+ * Game controller handling firing, tracking shots and reporting statistics.
  */
 package iscteiul.ista.battleship;
 
@@ -21,7 +21,9 @@ public class Game implements IGame {
 
 
     /**
-     * @param fleet
+     * Create a Game attached to the provided fleet.
+     *
+     * @param fleet fleet instance that the game will manage and use for shots/placement
      */
     public Game(IFleet fleet) {
         shots = new ArrayList<>();
@@ -58,60 +60,60 @@ public class Game implements IGame {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the list of all recorded shots.
      *
-     * @see battleship.IGame#getShots()
+     * @return list of positions fired upon
      */
     @Override
     public List<IPosition> getShots() {
         return shots;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Number of repeated shots (shots targeting an already fired position).
      *
-     * @see battleship.IGame#getRepeatedShots()
+     * @return repeated shot count
      */
     @Override
     public int getRepeatedShots() {
         return this.countRepeatedShots;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Number of invalid shots (e.g. out of bounds).
      *
-     * @see battleship.IGame#getInvalidShots()
+     * @return invalid shot count
      */
     @Override
     public int getInvalidShots() {
         return this.countInvalidShots;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Number of successful hit events recorded.
      *
-     * @see battleship.IGame#getHits()
+     * @return hits count
      */
     @Override
     public int getHits() {
         return this.countHits;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Number of ships sunk so far.
      *
-     * @see battleship.IGame#getSunkShips()
+     * @return sunk ships count
      */
     @Override
     public int getSunkShips() {
         return this.countSinks;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Number of ships still floating.
      *
-     * @see battleship.IGame#getRemainingShips()
+     * @return remaining ships count
      */
     @Override
     public int getRemainingShips() {
@@ -132,6 +134,12 @@ public class Game implements IGame {
     }
 
 
+    /**
+     * Prints the given positions on a simple ASCII board using the provided marker.
+     *
+     * @param positions positions to mark on the printed board
+     * @param marker    character used to mark the provided positions when printing
+     */
     public void printBoard(List<IPosition> positions, Character marker) {
         char[][] map = new char[Fleet.BOARD_SIZE][Fleet.BOARD_SIZE];
 
@@ -152,7 +160,7 @@ public class Game implements IGame {
 
 
     /**
-     * Prints the board showing valid shots that have been fired
+     * Prints the board showing valid shots that have been fired.
      */
     public void printValidShots() {
         printBoard(getShots(), 'X');
@@ -160,7 +168,7 @@ public class Game implements IGame {
 
 
     /**
-     * Prints the board showing the fleet
+     * Prints the board showing the fleet.
      */
     public void printFleet() {
         List<IPosition> shipPositions = new ArrayList<IPosition>();

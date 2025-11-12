@@ -1,5 +1,6 @@
 /**
- *
+ * Base abstract class for all ship types. Provides common utilities for
+ * position management, collision and adjacency checks and applying shots.
  */
 package iscteiul.ista.battleship;
 
@@ -7,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Base abstract class for all ship types. Provides common utilities for
+ * position management, collision and adjacency checks and applying shots.
+ */
 public abstract class Ship implements IShip {
 
     private static final String GALEAO = "galeao";
@@ -16,10 +21,12 @@ public abstract class Ship implements IShip {
     private static final String BARCA = "barca";
 
     /**
-     * @param shipKind
-     * @param bearing
-     * @param pos
-     * @return
+     * Factory method to create specific Ship implementations by category name.
+     *
+     * @param shipKind category name (e.g. "caravela")
+     * @param bearing  orientation
+     * @param pos      reference position
+     * @return created Ship instance or null if unknown category
      */
     static Ship buildShip(String shipKind, Compass bearing, Position pos) {
         Ship s;
@@ -53,9 +60,12 @@ public abstract class Ship implements IShip {
 
 
     /**
-     * @param category
-     * @param bearing
-     * @param pos
+     * Create a Ship with the given category, bearing and reference position.
+     * Subclasses should populate {@link #positions} accordingly.
+     *
+     * @param category ship category
+     * @param bearing  ship bearing (must not be null)
+     * @param pos      reference position (must not be null)
      */
     public Ship(String category, Compass bearing, IPosition pos) {
         assert bearing != null;

@@ -1,5 +1,6 @@
 /**
- *
+ * Concrete implementation of IPosition storing row/column and mutable
+ * occupancy/hit state.
  */
 package iscteiul.ista.battleship;
 
@@ -12,7 +13,10 @@ public class Position implements IPosition {
     private boolean isHit;
 
     /**
+     * Create a position with the given coordinates.
      *
+     * @param row    row index
+     * @param column column index
      */
     public Position(int row, int column) {
         this.row = row;
@@ -74,20 +78,16 @@ public class Position implements IPosition {
         return (Math.abs(this.getRow() - other.getRow()) <= 1 && Math.abs(this.getColumn() - other.getColumn()) <= 1);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IPosition#occupy()
+    /**
+     * Mark this position as occupied by a ship.
      */
     @Override
     public void occupy() {
         isOccupied = true;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IPosition#shoot()
+    /**
+     * Mark this position as hit.
      */
     @Override
     public void shoot() {
@@ -114,9 +114,13 @@ public class Position implements IPosition {
         return isHit;
     }
 
+    /**
+     * Human readable representation for debugging.
+     *
+     * @return textual representation
+     */
     @Override
     public String toString() {
         return ("Linha = " + row + " Coluna = " + column);
     }
-
 }

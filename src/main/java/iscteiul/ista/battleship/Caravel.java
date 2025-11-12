@@ -1,5 +1,7 @@
 /**
- *
+ * Small two-cell ship implementation (Caravel).
+ * The Caravel occupies SIZE consecutive cells in the given bearing
+ * starting at the provided position.
  */
 package iscteiul.ista.battleship;
 
@@ -8,8 +10,13 @@ public class Caravel extends Ship {
     private static final String NAME = "Caravela";
 
     /**
-     * @param bearing the bearing where the Caravel heads to
-     * @param pos     initial point for positioning the Caravel
+     * Create a Caravel oriented along the given bearing with its
+     * reference position at pos.
+     *
+     * @param bearing the bearing where the Caravel heads to (orientation)
+     * @param pos     initial point for positioning the Caravel (reference cell)
+     * @throws NullPointerException     if bearing is null
+     * @throws IllegalArgumentException if the bearing value is unsupported
      */
     public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {
         super(Caravel.NAME, bearing, pos);
@@ -34,10 +41,10 @@ public class Caravel extends Ship {
 
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the fixed size (number of cells) of this ship type.
      *
-     * @see battleship.Ship#getSize()
+     * @return ship size in grid cells
      */
     @Override
     public Integer getSize() {

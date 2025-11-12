@@ -1,5 +1,5 @@
 /**
- *
+ * Default implementation of IFleet. Manages ship storage and placement rules.
  */
 package iscteiul.ista.battleship;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Fleet implements IFleet {
     /**
-     * This operation prints all the given ships
+     * Print a list of ships to stdout.
      *
      * @param ships The list of ships
      */
@@ -103,7 +103,7 @@ public class Fleet implements IFleet {
 
 
     /**
-     * This operation shows the state of a fleet
+     * Show the fleet status summary (prints categories and floating/sunk info).
      */
     public void printStatus() {
         printAllShips();
@@ -116,8 +116,7 @@ public class Fleet implements IFleet {
     }
 
     /**
-     * This operation prints all the ships of a fleet belonging to a particular
-     * category
+     * Print ships of a particular category.
      *
      * @param category The category of ships of interest
      */
@@ -128,14 +127,14 @@ public class Fleet implements IFleet {
     }
 
     /**
-     * This operation prints all the ships of a fleet but not yet shot
+     * Print ships that are not yet shot.
      */
     public void printFloatingShips() {
         printShips(getFloatingShips());
     }
 
     /**
-     * This operation prints all the ships of a fleet
+     * Print all registered ships.
      */
     void printAllShips() {
         printShips(ships);
