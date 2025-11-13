@@ -41,4 +41,15 @@ class CompassTest {
         );
     }
 
+    @Test
+    @DisplayName("charToCompass deve devolver UNKNOWN para caracteres inválidos")
+    void testCharToCompassUnknownValues() {
+        assertAll(
+                () -> assertEquals(Compass.UNKNOWN, Compass.charToCompass('x')),
+                () -> assertEquals(Compass.UNKNOWN, Compass.charToCompass('N')), // maiúscula
+                () -> assertEquals(Compass.UNKNOWN, Compass.charToCompass(' ')),
+                () -> assertEquals(Compass.UNKNOWN, Compass.charToCompass('0'))
+        );
+    }
+
 }
