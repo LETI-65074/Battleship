@@ -20,6 +20,12 @@ class PositionTest {
 
     @Test
     void testHashCode() {
+        Position p1 = new Position(2, 4);
+        Position p2 = new Position(2, 4);
+        Position p3 = new Position(3, 4);
+
+        assertEquals(p1.hashCode(), p2.hashCode());   // iguais → mesmo hash
+        assertNotEquals(p1.hashCode(), p3.hashCode()); // diferentes → hash diferente
     }
 
     @Test
