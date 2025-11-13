@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IGame</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IGame (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IGame</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; * Game API for firing at positions and querying shot statistics.
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface IGame {
+&nbsp;    /**
+&nbsp;     * Fire a shot at the given board position.
+&nbsp;     *
+&nbsp;     * @param pos the target position to fire at
+&nbsp;     * @return the ship hit at that position, or null if the shot missed or sank nothing
+&nbsp;     */
+&nbsp;    IShip fire(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns the list of all positions that have been fired upon.
+&nbsp;     *
+&nbsp;     * @return list of fired positions (in chronological order)
+&nbsp;     */
+&nbsp;    List&lt;IPosition&gt; getShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Number of shots that repeated a previously fired position.
+&nbsp;     *
+&nbsp;     * @return repeated shot count
+&nbsp;     */
+&nbsp;    int getRepeatedShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Number of invalid shots (e.g., out of bounds).
+&nbsp;     *
+&nbsp;     * @return invalid shot count
+&nbsp;     */
+&nbsp;    int getInvalidShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Number of successful hits recorded.
+&nbsp;     *
+&nbsp;     * @return hit count
+&nbsp;     */
+&nbsp;    int getHits();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Number of ships that have been sunk.
+&nbsp;     *
+&nbsp;     * @return sunk ships count
+&nbsp;     */
+&nbsp;    int getSunkShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Number of ships still floating (not sunk).
+&nbsp;     *
+&nbsp;     * @return remaining ship count
+&nbsp;     */
+&nbsp;    int getRemainingShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Print a board view showing valid shots.
+&nbsp;     */
+&nbsp;    void printValidShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Print a board view showing the fleet positions.
+&nbsp;     */
+&nbsp;    void printFleet();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-13 01:43</div>
+</div>
+</body>
+</html>
