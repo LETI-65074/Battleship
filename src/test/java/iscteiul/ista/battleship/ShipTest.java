@@ -93,4 +93,33 @@ class ShipTest {
         );
     }
 
+    @Test
+    @DisplayName("occupies é true para posições do próprio navio e false para uma posição distante")
+    void occupiesChecksPositionsCorrectly() {
+        Ship ship = Ship.buildShip("caravela", Compass.EAST, new Position(4, 4));
+
+        IPosition oneOfItsPositions = ship.getPositions().get(0);
+        IPosition farAway = new Position(0, 0); // escolhe algo que saibas que não pertence ao navio
+
+        assertAll(
+                () -> assertTrue(ship.occupies(oneOfItsPositions)),
+                () -> assertFalse(ship.occupies(farAway))
+        );
+    }
+
+    @Test
+    @DisplayName("shoot marca posição como atingida quando o tiro acerta no navio")
+    void shootMarksPositionAsHit() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(7, 3));
+
+        IPosition target = ship.getPositions().get(0);
+
+        assertFalse(target.isHit(), "Antes do tiro, não deve estar atingida");
+
+        ship.shoot(target);
+
+        assertTrue(target.isHit(), "Depois do tiro, deve ficar atingida");
+    }
+
+
 }
