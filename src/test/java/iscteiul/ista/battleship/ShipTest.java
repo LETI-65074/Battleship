@@ -121,5 +121,15 @@ class ShipTest {
         assertTrue(target.isHit(), "Depois do tiro, deve ficar atingida");
     }
 
+    @Test
+    @DisplayName("tooCloseTo(IShip) é true quando os navios estão adjacentes")
+    void tooCloseToShipWhenAdjacent() {
+        Ship s1 = Ship.buildShip("barca", Compass.NORTH, new Position(5, 5));
+        // Supondo que (5,6) fica imediatamente ao lado de (5,5)
+        Ship s2 = Ship.buildShip("barca", Compass.NORTH, new Position(5, 6));
+
+        assertTrue(s1.tooCloseTo(s2) || s2.tooCloseTo(s1));
+    }
+
 
 }
