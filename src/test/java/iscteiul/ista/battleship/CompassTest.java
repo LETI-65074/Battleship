@@ -30,5 +30,15 @@ class CompassTest {
                 () -> assertEquals(String.valueOf(Compass.UNKNOWN.getDirection()), Compass.UNKNOWN.toString())
         );
     }
+    @Test
+    @DisplayName("charToCompass deve mapear corretamente caracteres válidos")
+    void testCharToCompassKnownValues() {
+        assertAll(
+                () -> assertEquals(Compass.NORTH, Compass.charToCompass('n')),
+                () -> assertEquals(Compass.SOUTH, Compass.charToCompass('s')),
+                () -> assertEquals(Compass.EAST, Compass.charToCompass('e')),
+                () -> assertEquals(Compass.WEST, Compass.charToCompass('o'))
+        );
+    }
 
 }
