@@ -73,4 +73,24 @@ class ShipTest {
         assertFalse(ship.stillFloating());
     }
 
+    @Test
+    @DisplayName("getTop/Bottom/Left/RightMostPos correspondem às posições do navio")
+    void extremePositionsAreComputedCorrectly() {
+        Ship ship = Ship.buildShip("galeao", Compass.SOUTH, new Position(2, 2));
+
+        List<IPosition> positions = ship.getPositions();
+
+        int expectedTop    = positions.stream().mapToInt(IPosition::getRow).min().orElseThrow();
+        int expectedBottom = positions.stream().mapToInt(IPosition::getRow).max().orElseThrow();
+        int expectedLeft   = positions.stream().mapToInt(IPosition::getColumn).min().orElseThrow();
+        int expectedRight  = positions.stream().mapToInt(IPosition::getColumn).max().orElseThrow();
+
+        assertAll(
+                () -> assertEquals(expectedTop,    ship.getTopMostPos()),
+                () -> assertEquals(expectedBottom, ship.getBottomMostPos()),
+                () -> assertEquals(expectedLeft,   ship.getLeftMostPos()),
+                () -> assertEquals(expectedRight,  ship.getRightMostPos())
+        );
+    }
+
 }
