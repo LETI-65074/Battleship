@@ -45,4 +45,32 @@ class ShipTest {
         Ship unknown = Ship.buildShip("submarino", Compass.NORTH, new Position(0, 0));
         assertNull(unknown);
     }
+    @Test
+    @DisplayName("stillFloating é true enquanto houver posições não atingidas")
+    void stillFloatingTrueWhileNotAllHit() {
+        Ship ship = Ship.buildShip("galeao", Compass.EAST, new Position(5, 5));
+
+        // Nenhuma posição foi atingida ainda
+        assertTrue(ship.stillFloating());
+
+        // Disparar só numa parte do navio
+        ship.getPositions().get(0).shoot();
+
+        // Ainda deve estar a flutuar (há posições não atingidas)
+        assertTrue(ship.stillFloating());
+    }
+
+    @Test
+    @DisplayName("stillFloating é false depois de todas as posições serem atingidas")
+    void stillFloatingFalseAfterAllHits() {
+        Ship ship = Ship.buildShip("galeao", Compass.EAST, new Position(5, 5));
+
+        // Disparar em todas as posições do navio
+        for (IPosition p : ship.getPositions()) {
+            p.shoot();
+        }
+
+        assertFalse(ship.stillFloating());
+    }
+
 }
