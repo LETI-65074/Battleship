@@ -54,6 +54,20 @@ class PositionTest {
 
     @Test
     void isAdjacentTo() {
+        Position center = new Position(5, 5);
+
+        Position up = new Position(4, 5);
+        Position down = new Position(6, 5);
+        Position left = new Position(5, 4);
+        Position right = new Position(5, 6);
+
+        // adjacentes diretos (óbvios)
+        assertAll(
+                () -> assertTrue(center.isAdjacentTo(up)),
+                () -> assertTrue(center.isAdjacentTo(down)),
+                () -> assertTrue(center.isAdjacentTo(left)),
+                () -> assertTrue(center.isAdjacentTo(right))
+        );
     }
 
     @Test
