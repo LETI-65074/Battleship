@@ -131,5 +131,23 @@ class ShipTest {
         assertTrue(s1.tooCloseTo(s2) || s2.tooCloseTo(s1));
     }
 
+    @Test
+    @DisplayName("toString inclui categoria, orientação e posição")
+    void toStringContainsUsefulInfo() {
+        Position refPos = new Position(1, 1);
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, refPos);
+
+        String str = ship.toString();
+
+        assertAll(
+                () -> assertTrue(str.contains(ship.getCategory()),
+                        "toString deve conter a categoria"),
+                () -> assertTrue(str.contains(ship.getBearing().toString()),
+                        "toString deve conter o bearing"),
+                () -> assertTrue(str.contains(ship.getPosition().toString()),
+                        "toString deve conter a posição de referência")
+        );
+    }
+
 
 }
