@@ -14,6 +14,8 @@ class PositionTest {
 
     @Test
     void getColumn() {
+        Position p = new Position(3, 5);
+        assertEquals(5, p.getColumn());
     }
 
     @Test
