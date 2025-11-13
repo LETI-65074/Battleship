@@ -19,4 +19,16 @@ class CompassTest {
         );
     }
 
+    @Test
+    @DisplayName("toString deve devolver uma string com o mesmo char de getDirection")
+    void testToStringMatchesDirection() {
+        assertAll(
+                () -> assertEquals(String.valueOf(Compass.NORTH.getDirection()), Compass.NORTH.toString()),
+                () -> assertEquals(String.valueOf(Compass.SOUTH.getDirection()), Compass.SOUTH.toString()),
+                () -> assertEquals(String.valueOf(Compass.EAST.getDirection()), Compass.EAST.toString()),
+                () -> assertEquals(String.valueOf(Compass.WEST.getDirection()), Compass.WEST.toString()),
+                () -> assertEquals(String.valueOf(Compass.UNKNOWN.getDirection()), Compass.UNKNOWN.toString())
+        );
+    }
+
 }
