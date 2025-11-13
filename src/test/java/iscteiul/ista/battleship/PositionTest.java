@@ -72,21 +72,41 @@ class PositionTest {
 
     @Test
     void occupy() {
+        Position p = new Position(2, 3);
+        assertFalse(p.isOccupied());  // antes
+        p.occupy();
+        assertTrue(p.isOccupied());   // depois
     }
 
     @Test
     void shoot() {
+        Position p = new Position(1, 1);
+        assertFalse(p.isHit());     // antes
+        p.shoot();
+        assertTrue(p.isHit());      // depois
     }
 
     @Test
     void isOccupied() {
+        Position p = new Position(4, 7);
+
+        assertFalse(p.isOccupied());
+        p.occupy();
+        assertTrue(p.isOccupied());
     }
 
     @Test
     void isHit() {
+        Position p = new Position(3, 3);
+
+        assertFalse(p.isHit());
+        p.shoot();
+        assertTrue(p.isHit());
     }
 
     @Test
     void testToString() {
+        Position p = new Position(2, 3);
+        assertEquals("Linha = 2 Coluna = 3", p.toString());
     }
 }
