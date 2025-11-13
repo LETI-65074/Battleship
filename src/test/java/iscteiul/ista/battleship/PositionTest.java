@@ -30,6 +30,26 @@ class PositionTest {
 
     @Test
     void testEquals() {
+        Position p1 = new Position(2, 4);
+        Position p2 = new Position(2, 4);
+        Position p3 = new Position(3, 4);
+        Object otherType = "not a position";
+
+        // reflexivo
+        assertEquals(p1, p1);
+
+        // simétrico para objetos equivalentes
+        assertEquals(p1, p2);
+        assertEquals(p2, p1);
+
+        // diferente linha → diferente
+        assertNotEquals(p1, p3);
+
+        // null → false
+        assertNotEquals(p1, null);
+
+        // outro tipo → false
+        assertNotEquals(p1, otherType);
     }
 
     @Test
