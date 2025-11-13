@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IFleet</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IFleet (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">IFleet</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; * Fleet management interface: holds ships and provides queries and printing utilities.
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface IFleet {
+&nbsp;    /** Size (rows/columns) of the square game board. */
+<b class="nc">&nbsp;    Integer BOARD_SIZE = 10;</b>
+&nbsp;    /** Default expected number of ships in a fleet. */
+<b class="nc">&nbsp;    Integer FLEET_SIZE = 10;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return all ships currently registered in the fleet.
+&nbsp;     *
+&nbsp;     * @return list of ships
+&nbsp;     */
+&nbsp;    List&lt;IShip&gt; getShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add a ship to the fleet if it fits and doesn&#39;t collide.
+&nbsp;     *
+&nbsp;     * @param s ship to add
+&nbsp;     * @return true if added, false otherwise
+&nbsp;     */
+&nbsp;    boolean addShip(IShip s);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return ships whose category matches the provided string.
+&nbsp;     *
+&nbsp;     * @param category category name or fragment
+&nbsp;     * @return list of matching ships
+&nbsp;     */
+&nbsp;    List&lt;IShip&gt; getShipsLike(String category);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return ships that are not yet sunk.
+&nbsp;     *
+&nbsp;     * @return list of floating ships
+&nbsp;     */
+&nbsp;    List&lt;IShip&gt; getFloatingShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return the ship occupying the given position, or null if none.
+&nbsp;     *
+&nbsp;     * @param pos position to check
+&nbsp;     * @return ship at position or null
+&nbsp;     */
+&nbsp;    IShip shipAt(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Print a summary status of the fleet to standard output.
+&nbsp;     */
+&nbsp;    void printStatus();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-13 01:43</div>
+</div>
+</body>
+</html>
