@@ -138,6 +138,24 @@ class FleetTest {
 
     @Test
     void printStatus() {
+        Fleet fleet = new Fleet();
+        fleet.addShip(new Barge(Compass.NORTH, new Position(0, 0)));
+
+        // capturar System.out
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            fleet.printStatus();
+        } finally {
+            System.setOut(originalOut); // repor System.out
+        }
+
+        String output = outContent.toString();
+
+        assertNotNull(output);
+        assertFalse(output.isBlank());
     }
 
     @Test
