@@ -82,6 +82,22 @@ class FleetTest {
 
     @Test
     void getShipsLike() {
+        Fleet fleet = new Fleet();
+
+        IShip barge1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip barge2 = new Barge(Compass.EAST, new Position(5, 5));
+        IShip caravel = new Caravel(Compass.SOUTH, new Position(2, 2));
+
+        fleet.addShip(barge1);
+        fleet.addShip(barge2);
+        fleet.addShip(caravel);
+
+        // categoria que provavelmente não existe
+        var unknownCategoryShips = fleet.getShipsLike("NaoExisteCategoria");
+
+        assertNotNull(unknownCategoryShips);
+        assertTrue(unknownCategoryShips.isEmpty());
+
     }
 
     @Test
