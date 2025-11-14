@@ -120,6 +120,20 @@ class FleetTest {
 
     @Test
     void shipAt() {
+        Fleet fleet = new Fleet();
+
+        IShip ship1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip ship2 = new Barge(Compass.EAST, new Position(5, 5));
+
+        fleet.addShip(ship1);
+        fleet.addShip(ship2);
+
+        // Deve encontrar o navio correto em cada posição
+        assertEquals(ship1, fleet.shipAt(new Position(0, 0)));
+        assertEquals(ship2, fleet.shipAt(new Position(5, 5)));
+
+        // Posição sem navio → null
+        assertNull(fleet.shipAt(new Position(3, 3)));
     }
 
     @Test
