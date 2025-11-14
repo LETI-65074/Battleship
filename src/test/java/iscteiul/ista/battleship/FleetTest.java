@@ -60,6 +60,24 @@ class FleetTest {
 
     @Test
     void addShip() {
+        Fleet fleet = new Fleet();
+
+        IShip valid1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip valid2 = new Barge(Compass.EAST, new Position(5, 5)); // longe -> válido
+
+        IShip invalidCollision = new Barge(Compass.NORTH, new Position(0, 0)); // mesma posição do primeiro
+
+        // adicionar válidos
+        assertTrue(fleet.addShip(valid1));
+        assertTrue(fleet.addShip(valid2));
+
+        // tentar adicionar um barco que colide com o primeiro
+        assertFalse(fleet.addShip(invalidCollision));
+
+        // frota deve conter apenas os dois válidos
+        assertEquals(2, fleet.getShips().size());
+        assertTrue(fleet.getShips().contains(valid1));
+        assertTrue(fleet.getShips().contains(valid2));
     }
 
     @Test
