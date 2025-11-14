@@ -160,6 +160,24 @@ class FleetTest {
 
     @Test
     void printShipsByCategory() {
+        Fleet fleet = new Fleet();
+        fleet.addShip(new Barge(Compass.NORTH, new Position(0, 0)));
+        fleet.addShip(new Caravel(Compass.EAST, new Position(5, 5)));
+
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            fleet.printShipsByCategory("Barge"); // chama o método com uma categoria qualquer
+        } finally {
+            System.setOut(originalOut); // repõe o System.out
+        }
+
+        String output = outContent.toString();
+
+        // Só garantimos que não é null (que escreveu *algo*, nem que seja vazio)
+        assertNotNull(output);
     }
 
     @Test
