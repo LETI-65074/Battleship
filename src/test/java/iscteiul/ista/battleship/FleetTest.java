@@ -102,6 +102,20 @@ class FleetTest {
 
     @Test
     void getFloatingShips() {
+        Fleet fleet = new Fleet();
+
+        IShip ship1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip ship2 = new Caravel(Compass.EAST, new Position(5, 5));
+
+        fleet.addShip(ship1);
+        fleet.addShip(ship2);
+
+        var floating = fleet.getFloatingShips();
+
+        assertNotNull(floating);
+        assertEquals(2, floating.size());
+        assertTrue(floating.contains(ship1));
+        assertTrue(floating.contains(ship2));
     }
 
     @Test
