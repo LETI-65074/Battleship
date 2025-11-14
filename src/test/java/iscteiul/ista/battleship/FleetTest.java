@@ -39,6 +39,23 @@ class FleetTest {
 
     @Test
     void getShips() {
+        Fleet fleet = new Fleet();
+
+        IShip ship1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip ship2 = new Barge(Compass.EAST, new Position(5, 5)); // bem longe do primeiro
+
+        // inicialmente deve estar vazia
+        assertTrue(fleet.getShips().isEmpty());
+
+        // adicionar navios
+        fleet.addShip(ship1);
+        fleet.addShip(ship2);
+
+        var ships = fleet.getShips();
+
+        assertEquals(2, ships.size());
+        assertTrue(ships.contains(ship1));
+        assertTrue(ships.contains(ship2));
     }
 
     @Test
