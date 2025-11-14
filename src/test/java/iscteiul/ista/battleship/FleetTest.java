@@ -182,6 +182,26 @@ class FleetTest {
 
     @Test
     void printFloatingShips() {
+        Fleet fleet = new Fleet();
+
+        IShip ship1 = new Barge(Compass.NORTH, new Position(0, 0));
+        IShip ship2 = new Caravel(Compass.EAST, new Position(5, 5));
+
+        fleet.addShip(ship1);
+        fleet.addShip(ship2);
+
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            fleet.printFloatingShips();
+        } finally {
+            System.setOut(originalOut);
+        }
+
+        String output = outContent.toString();
+        assertNotNull(output);
     }
 
     @Test
