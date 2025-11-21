@@ -1,8 +1,3 @@
-/**
- * Small two-cell ship implementation (Caravel).
- * The Caravel occupies SIZE consecutive cells in the given bearing
- * starting at the provided position.
- */
 package iscteiul.ista.battleship;
 
 public class Caravel extends Ship {
@@ -15,30 +10,28 @@ public class Caravel extends Ship {
      *
      * @param bearing the bearing where the Caravel heads to (orientation)
      * @param pos     initial point for positioning the Caravel (reference cell)
-     * @throws NullPointerException     if bearing is null
+     *
      * @throws IllegalArgumentException if the bearing value is unsupported
      */
-    public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {
+    public Caravel(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Caravel.NAME, bearing, pos);
 
-        if (bearing == null)
-            throw new NullPointerException("ERROR! invalid bearing for the caravel");
 
-        switch (bearing) {
-            case NORTH:
-            case SOUTH:
-                for (int r = 0; r < SIZE; r++)
-                    getPositions().add(new Position(pos.getRow() + r, pos.getColumn()));
-                break;
-            case EAST:
-            case WEST:
-                for (int c = 0; c < SIZE; c++)
-                    getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));
-                break;
-            default:
-                throw new IllegalArgumentException("ERROR! invalid bearing for the caravel");
+        if (bearing == Compass.NORTH || bearing == Compass.SOUTH) {
+            for (int r = 0; r < SIZE; r++) {
+                getPositions().add(new Position(pos.getRow() + r, pos.getColumn()));
+            }
         }
 
+        else if (bearing == Compass.EAST || bearing == Compass.WEST) {
+            for (int c = 0; c < SIZE; c++) {
+                getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));
+            }
+        }
+
+        else {
+            throw new IllegalArgumentException("ERROR! invalid bearing for the caravel");
+        }
     }
 
     /**
@@ -50,5 +43,4 @@ public class Caravel extends Ship {
     public Integer getSize() {
         return SIZE;
     }
-
 }
