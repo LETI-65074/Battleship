@@ -14,10 +14,10 @@ public class Game implements IGame {
     private IFleet fleet;
     private List<IPosition> shots;
 
-    private Integer countInvalidShots;
-    private Integer countRepeatedShots;
-    private Integer countHits;
-    private Integer countSinks;
+    private int countInvalidShots;
+    private int countRepeatedShots;
+    private int countHits;
+    private int countSinks;
 
 
     /**
@@ -27,10 +27,14 @@ public class Game implements IGame {
      */
     public Game(IFleet fleet) {
         shots = new ArrayList<>();
+        this.fleet = fleet;
+
         countInvalidShots = 0;
         countRepeatedShots = 0;
-        this.fleet = fleet;
+        countHits = 0;
+        countSinks = 0;
     }
+
 
     /*
      * (non-Javadoc)
