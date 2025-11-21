@@ -1,25 +1,28 @@
-# Unit tests – run-01-inicial
-Tags: unit-tests, run
-Meta: TMS-ID = TESTRUN-001, date = 2025-11-13
+# Test Run: Run 01 – inicial
 
-## S3 Ships test case
-* C3 BargeTest
-  Tags: ship, barge
-  Result: passed
-* C4 CaravelTest
-  Tags: ship, caravel
-  Result: passed
-* C5 CarrackTest
-  Tags: ship, carrack
-  Result: passed
-* C6 FrigateTest
-  Tags: ship, frigate
-  Result: passed
-* C7 GalleonTest
-  Tags: ship, galleon
-  Result: passed
+TMS-ID: TR-RUN-001
+Tags: #test-run #unit-tests #local
 
-## S4 Tasks test case
-* C8 TasksTest
-  Tags: tasks, ui
-  Result: unknown   <!-- ou failed/passed quando souberes -->
+Related Suites:
+- TS-OPS-001   <!-- operations-checklist.t.md -->
+- TS-UTC-001   <!-- unit-tests-cases.t.md -->
+
+Date: 2025-11-21
+Executor: @LETI-65074
+
+Results:
+- TC-Position-001: passed (@LETI-65074)
+- TC-Compass-001:  passed (@LETI-65074)
+- TC-Ship-001:     passed (@LETI-65074)
+
+- TC-Barge-001:    passed (@LETI-65074)
+- TC-Caravel-001:  passed (@LETI-65074)
+- TC-Carrack-001:  passed (@LETI-65074)
+- TC-Frigate-001:  passed (@LETI-65074)
+- TC-Galleon-001:  passed (@LETI-65074)
+
+- TC-Fleet-001:    passed (@LETI-65074)
+- TC-Game-001:     passed (@LETI-65074)
+- TC-App-001:      passed (@LETI-65074)
+
+- TC-Tasks-001:    not-applicable (@LETI-65074)

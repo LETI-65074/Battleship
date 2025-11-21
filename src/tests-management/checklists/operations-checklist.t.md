@@ -1,31 +1,12 @@
-# Unit tests
-Tags: unit-tests
-Meta: TMS-ID = TESTSUITE-001
+# Test Suite: Operations checklist
 
-## S3 Ships test case
-* C3 BargeTest
-  Tags: ship, barge
-    * Step 1 – Criar Barge em posição válida
-    * Step 2 – Verificar posições ocupadas e stillFloating
-* C4 CaravelTest
-  Tags: ship, caravel
-    * Step 1 – Criar Caravel
-    * Step 2 – Verificar posições / orientação
-* C5 CarrackTest
-  Tags: ship, carrack
-    * Step 1 – Criar Carrack
-    * Step 2 – Verificar posições / orientação
-* C6 FrigateTest
-  Tags: ship, frigate
-    * Step 1 – Criar Frigate
-    * Step 2 – Verificar posições / orientação
-* C7 GalleonTest
-  Tags: ship, galleon
-    * Step 1 – Criar Galleon
-    * Step 2 – Verificar posições / orientação
+TMS-ID: TS-OPS-001
+Tags: #checklist #reports #unit-tests
 
-## S4 Tasks test case
-* C8 TasksTest
-  Tags: tasks, ui
-    * Step 1 – Executar Tasks (menu)
-    * Step 2 – Verificar interação básica com o utilizador
+* Gerar relatório de cobertura de código com "Run with Coverage" no IntelliJ para todos os testes em `iscteiul.ista.battleship`
+* Guardar o relatório de cobertura HTML na pasta `reports` com o nome que inclua o utilizador GitHub LETI-65074
+* Executar todos os testes unitários (`BargeTest`, `CaravelTest`, `CarrackTest`, `CompassTest`, `FleetTest`, `FrigateTest`, `GalleonTest`, `GameTest`, `PositionTest`, `ShipTest`, `AppTest`) antes de cada `git push`
+* Confirmar que o workflow do GitHub Actions correu os testes com sucesso após cada `git push`
+* Exportar os resultados dos testes (Run → Export Test Results) para a pasta `reports/tests`
+* Criar uma tag no último commit da entrega (ex.: `v1.0` ou `entrega-final`) e fazer `git push origin --tags`
+* Abrir o Pull Request final no GitHub a partir do ramo da entrega
