@@ -109,4 +109,23 @@ class PositionTest {
         Position p = new Position(2, 3);
         assertEquals("Linha = 2 Coluna = 3", p.toString());
     }
+
+    @Test
+    void isAdjacentToFalseCases() {
+        Position center = new Position(5, 5);
+
+        // 1) Diferença na linha > 1 → primeira condição (linha) falha
+        Position farRow = new Position(7, 5); // |7 - 5| = 2 > 1, coluna igual
+
+        // 2) Diferença na coluna > 1 → primeira condição (linha) passa, segunda falha
+        Position farCol = new Position(5, 8); // |5 - 5| = 0 <= 1, |8 - 5| = 3 > 1
+
+        assertAll(
+                () -> assertFalse(center.isAdjacentTo(farRow),
+                        "Posição com diferença de linha > 1 não deve ser adjacente"),
+                () -> assertFalse(center.isAdjacentTo(farCol),
+                        "Posição com diferença de coluna > 1 não deve ser adjacente")
+        );
+    }
+
 }
