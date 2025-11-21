@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IShip</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IShip (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IShip</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; * Public API for a ship in the game.
+&nbsp; * Exposes category, orientation, occupied positions and basic interactions
+&nbsp; * such as checking occupancy, proximity rules and applying a shot.
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * Public API for a ship in the game.
+&nbsp; * Exposes category, orientation, occupied positions and basic interactions
+&nbsp; * such as checking occupancy, proximity rules and applying a shot.
+&nbsp; */
+&nbsp;public interface IShip {
+&nbsp;    /**
+&nbsp;     * Ship category/name (e.g. &quot;caravela&quot;, &quot;galeao&quot;).
+&nbsp;     *
+&nbsp;     * @return category string
+&nbsp;     */
+&nbsp;    String getCategory();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Size (number of grid cells) occupied by this ship.
+&nbsp;     *
+&nbsp;     * @return ship size
+&nbsp;     */
+&nbsp;    Integer getSize();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Positions occupied by the ship (reference positions).
+&nbsp;     *
+&nbsp;     * @return list of occupied positions
+&nbsp;     */
+&nbsp;    List&lt;IPosition&gt; getPositions();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Reference position used when creating the ship.
+&nbsp;     *
+&nbsp;     * @return reference position
+&nbsp;     */
+&nbsp;    IPosition getPosition();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Ship orientation.
+&nbsp;     *
+&nbsp;     * @return compass bearing
+&nbsp;     */
+&nbsp;    Compass getBearing();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indicates whether the ship has any non-hit positions remaining.
+&nbsp;     *
+&nbsp;     * @return true if at least one position is not hit
+&nbsp;     */
+&nbsp;    boolean stillFloating();
+&nbsp;
+&nbsp;    int getTopMostPos();
+&nbsp;
+&nbsp;    int getBottomMostPos();
+&nbsp;
+&nbsp;    int getLeftMostPos();
+&nbsp;
+&nbsp;    int getRightMostPos();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks whether this ship occupies the given position.
+&nbsp;     *
+&nbsp;     * @param pos position to check
+&nbsp;     * @return true if any occupied position equals {@code pos}
+&nbsp;     */
+&nbsp;    boolean occupies(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks whether this ship is too close (adjacent) to another ship.
+&nbsp;     *
+&nbsp;     * @param other other ship
+&nbsp;     * @return true if any occupied cell is adjacent to any cell of {@code other}
+&nbsp;     */
+&nbsp;    boolean tooCloseTo(IShip other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks whether this ship is too close (adjacent) to the provided position.
+&nbsp;     *
+&nbsp;     * @param pos position to check
+&nbsp;     * @return true if any occupied cell is adjacent to {@code pos}
+&nbsp;     */
+&nbsp;    boolean tooCloseTo(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Apply a shot to this ship: if the provided position matches an occupied
+&nbsp;     * position it should be marked as hit.
+&nbsp;     *
+&nbsp;     * @param pos target position
+&nbsp;     */
+&nbsp;    void shoot(IPosition pos);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-21 19:41</div>
+</div>
+</body>
+</html>

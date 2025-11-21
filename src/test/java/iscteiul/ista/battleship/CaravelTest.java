@@ -86,4 +86,32 @@ class CaravelTest {
         assertTrue(c.tooCloseTo(new Position(4, 5)));
         assertFalse(c.tooCloseTo(new Position(10, 10)));
     }
+
+    @Test
+    @DisplayName("tooCloseTo(IShip) é true quando duas Caravelas estão adjacentes")
+    void caravelTooCloseToAnotherCaravelAdjacent() {
+        // Primeira caravela em (4,4)-(4,5)
+        Caravel c1 = new Caravel(Compass.EAST, new Position(4, 4));
+        // Segunda caravela começa em (4,6)-(4,7), imediatamente ao lado
+        Caravel c2 = new Caravel(Compass.EAST, new Position(4, 6));
+
+        assertTrue(c1.tooCloseTo(c2) || c2.tooCloseTo(c1),
+                "Caravelas adjacentes devem ser consideradas tooCloseTo");
+    }
+
+    @Test
+    @DisplayName("tooCloseTo(IShip) é false quando Caravelas estão afastadas")
+    void caravelNotTooCloseToFarCaravel() {
+        Caravel c1 = new Caravel(Compass.EAST, new Position(0, 0));
+        Caravel c2 = new Caravel(Compass.EAST, new Position(10, 10));
+
+        assertAll(
+                () -> assertFalse(c1.tooCloseTo(c2),
+                        "Caravelas afastadas não devem ser tooCloseTo"),
+                () -> assertFalse(c2.tooCloseTo(c1),
+                        "A relação deve ser falsa nos dois sentidos")
+        );
+    }
+
+
 }

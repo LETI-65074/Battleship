@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IPosition</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IPosition (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IPosition</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; * Represents a coordinate on the game board.
+&nbsp; * Provides information about occupancy and hit status and basic actions
+&nbsp; * (occupy, shoot) as well as adjacency checks.
+&nbsp; *
+&nbsp; * Implementations are expected to be immutable in coordinates but mutable
+&nbsp; * in occupancy/hit state.
+&nbsp; *
+&nbsp; * @author fba
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author fba
+&nbsp; */
+&nbsp;public interface IPosition {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns the row index of this position.
+&nbsp;     *
+&nbsp;     * @return row index
+&nbsp;     */
+&nbsp;    int getRow();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns the column index of this position.
+&nbsp;     *
+&nbsp;     * @return column index
+&nbsp;     */
+&nbsp;    int getColumn();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Equality is based on row and column coordinates only.
+&nbsp;     *
+&nbsp;     * @param other object to compare
+&nbsp;     * @return true if coordinates are the same
+&nbsp;     */
+&nbsp;    boolean equals(Object other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks whether this position is adjacent (including diagonals) to {@code other}.
+&nbsp;     *
+&nbsp;     * @param other position to compare
+&nbsp;     * @return true if positions are at most 1 cell apart in both dimensions
+&nbsp;     */
+&nbsp;    boolean isAdjacentTo(IPosition other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Mark this position as occupied by a ship.
+&nbsp;     */
+&nbsp;    void occupy();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Mark this position as having been shot (hit).
+&nbsp;     */
+&nbsp;    void shoot();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indicates whether this position is occupied by a ship.
+&nbsp;     *
+&nbsp;     * @return true if occupied
+&nbsp;     */
+&nbsp;    boolean isOccupied();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indicates whether this position has been shot.
+&nbsp;     *
+&nbsp;     * @return true if hit
+&nbsp;     */
+&nbsp;    boolean isHit();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-21 19:41</div>
+</div>
+</body>
+</html>

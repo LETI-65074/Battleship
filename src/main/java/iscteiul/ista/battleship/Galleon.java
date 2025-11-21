@@ -19,8 +19,6 @@ public class Galleon extends Ship {
     public Galleon(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Galleon.NAME, bearing, pos);
 
-        if (bearing == null)
-            throw new NullPointerException("ERROR! invalid bearing for the galleon");
 
         switch (bearing) {
             case NORTH:
@@ -59,7 +57,7 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn() + 1));
     }
 
-    private void fillSouth(IPosition pos) {
+    public void fillSouth(IPosition pos) {
         for (int i = 0; i < 2; i++) {
             getPositions().add(new Position(pos.getRow() + i, pos.getColumn()));
         }
