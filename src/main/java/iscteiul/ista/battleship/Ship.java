@@ -250,4 +250,20 @@ public abstract class Ship implements IShip {
         return "[" + category + " " + bearing + " " + pos + "]";
     }
 
+    static class TestShip extends Ship {
+
+        private final int size;
+
+        TestShip(List<IPosition> positions) {
+            super("test", Compass.NORTH, positions.get(0));
+            this.positions = new java.util.ArrayList<>(positions);
+            this.size = this.positions.size();
+        }
+
+        @Override
+        public Integer getSize() {
+            return size;
+        }
+    }
+
 }

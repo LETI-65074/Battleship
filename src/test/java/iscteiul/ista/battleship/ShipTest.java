@@ -149,5 +149,112 @@ class ShipTest {
         );
     }
 
+    @Test
+    @DisplayName("shoot não altera nenhuma posição quando o tiro falha (fora do navio)")
+    void shootMissDoesNotHitAnyPosition() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(7, 3));
+
+        // Garantir que todas as posições começam não atingidas
+        for (IPosition p : ship.getPositions()) {
+            assertFalse(p.isHit(), "Antes do tiro, nenhuma posição deve estar atingida");
+        }
+
+        // Tiro numa posição que não pertence ao navio
+        IPosition farAway = new Position(0, 0);
+        ship.shoot(farAway);
+
+        // Depois do tiro falhado, continua tudo não atingido
+        for (IPosition p : ship.getPositions()) {
+            assertFalse(p.isHit(), "Tiro falhado não deve marcar nenhuma posição");
+        }
+    }
+    @Test
+    @DisplayName("tooCloseTo(IShip) é false quando os navios estão bem afastados")
+    void tooCloseToShipWhenNotAdjacent() {
+        Ship s1 = Ship.buildShip("barca", Compass.NORTH, new Position(0, 0));
+        Ship s2 = Ship.buildShip("barca", Compass.NORTH, new Position(7, 7)); // bem longe
+
+        assertAll(
+                () -> assertFalse(s1.tooCloseTo(s2),
+                        "Navios afastados não devem ser considerados demasiado próximos"),
+                () -> assertFalse(s2.tooCloseTo(s1),
+                        "A relação deve ser falsa em ambos os sentidos")
+        );
+    }
+    @Test
+    @DisplayName("getTop/Bottom/Left/RightMostPos também funcionam quando a primeira posição não é extrema")
+    void extremePositionsWhenFirstIsNotExtreme() {
+        // A primeira posição NÃO é nem top, nem bottom, nem left, nem right
+        List<IPosition> positions = List.of(
+                new Position(5, 5), // índice 0 (referência) – não é extrema
+                new Position(2, 7), // mais acima (top)
+                new Position(8, 3), // mais abaixo (bottom) e mais à esquerda (left)
+                new Position(4, 9)  // mais à direita (right)
+        );
+
+        Ship ship = new Ship.TestShip(positions);
+
+        int expectedTop    = positions.stream().mapToInt(IPosition::getRow).min().orElseThrow();
+        int expectedBottom = positions.stream().mapToInt(IPosition::getRow).max().orElseThrow();
+        int expectedLeft   = positions.stream().mapToInt(IPosition::getColumn).min().orElseThrow();
+        int expectedRight  = positions.stream().mapToInt(IPosition::getColumn).max().orElseThrow();
+
+        assertAll(
+                () -> assertEquals(expectedTop,    ship.getTopMostPos(),
+                        "TopMost deve ser calculado mesmo se não for a primeira posição"),
+                () -> assertEquals(expectedBottom, ship.getBottomMostPos(),
+                        "BottomMost deve ser calculado mesmo se não for a primeira posição"),
+                () -> assertEquals(expectedLeft,   ship.getLeftMostPos(),
+                        "LeftMost deve ser calculado mesmo se não for a primeira posição"),
+                () -> assertEquals(expectedRight,  ship.getRightMostPos(),
+                        "RightMost deve ser calculado mesmo se não for a primeira posição")
+        );
+    }
+
+    @Test
+    @DisplayName("buildShip lança AssertionError quando bearing é null")
+    void buildShipWithNullBearingThrowsAssertionError() {
+        Position pos = new Position(0, 0);
+
+        assertThrows(AssertionError.class,
+                () -> Ship.buildShip("barca", null, pos),
+                "Bearing null deve provocar AssertionError no construtor de Ship");
+    }
+    @Test
+    @DisplayName("buildShip lança AssertionError quando posição de referência é null")
+    void buildShipWithNullPositionThrowsAssertionError() {
+        assertThrows(AssertionError.class,
+                () -> Ship.buildShip("barca", Compass.NORTH, null),
+                "Posição de referência null deve provocar AssertionError");
+    }
+    @Test
+    @DisplayName("occupies lança AssertionError quando a posição é null")
+    void occupiesWithNullPositionThrowsAssertionError() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(1, 1));
+
+        assertThrows(AssertionError.class,
+                () -> ship.occupies(null),
+                "occupies(null) deve lançar AssertionError");
+    }
+    @Test
+    @DisplayName("tooCloseTo(IShip) lança AssertionError quando o outro navio é null")
+    void tooCloseToWithNullShipThrowsAssertionError() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(2, 2));
+
+        assertThrows(AssertionError.class,
+                () -> ship.tooCloseTo((IShip) null),
+                "tooCloseTo(null) deve lançar AssertionError");
+    }
+
+    @Test
+    @DisplayName("shoot lança AssertionError quando a posição é null")
+    void shootWithNullPositionThrowsAssertionError() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(3, 3));
+
+        assertThrows(AssertionError.class,
+                () -> ship.shoot(null),
+                "shoot(null) deve lançar AssertionError");
+    }
+
 
 }
