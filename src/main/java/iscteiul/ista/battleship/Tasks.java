@@ -1,6 +1,9 @@
 /**
  *
- */
+ *//*
+
+
+
 package iscteiul.ista.battleship;
 
 import java.util.Scanner;
@@ -9,10 +12,15 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+
+
+*/
 /**
  * Small set of console tasks used for manual testing / exercises.
  * Methods read input from a Scanner and exercise ship/fleet/game behaviour.
- */
+ *//*
+
 public class Tasks {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -20,9 +28,11 @@ public class Tasks {
 
     private static final String GOODBYE_MESSAGE = "Bons ventos!";
 
-    /**
+    */
+/**
      * Strings to be used by the user
-     */
+     *//*
+
     private static final String NOVAFROTA = "nova";
     private static final String DESISTIR = "desisto";
     private static final String RAJADA = "rajada";
@@ -38,10 +48,12 @@ public class Tasks {
     // then some rule checking, then dealing with firing and so on
     /////////////////////////////////////////////////////////////////////////////
 
-    /**
+    */
+/**
      * This task tests the building up of ships: For each ship, reads positions and
      * indicates whether the ship occupies each one of such positions or not
-     */
+     *//*
+
     public static void taskA() {
         Scanner in = new Scanner(System.in);
         while (in.hasNext()) {
@@ -54,11 +66,13 @@ public class Tasks {
         }
     }
 
-    /**
+    */
+/**
      * This task tests the building up of fleets
      *
      * @param game unused parameter in the task (kept for compatibility)
-     */
+     *//*
+
     public static void taskB(Game game) {
         Scanner in = new Scanner(System.in);
         IFleet fleet = null;
@@ -81,10 +95,12 @@ public class Tasks {
         LOGGER.info(GOODBYE_MESSAGE);
     }
 
-    /**
+    */
+/**
      * This task tests the building up of fleets and takes into consideration the
      * possibility of cheating
-     */
+     *//*
+
     public static void taskC() {
         Scanner in = new Scanner(System.in);
         IFleet fleet = null;
@@ -110,9 +126,11 @@ public class Tasks {
         LOGGER.info(GOODBYE_MESSAGE);
     }
 
-    /**
+    */
+/**
      * This task also tests the fighting element of a round of three shots
-     */
+     *//*
+
     public static void taskD() {
 
         Scanner in = new Scanner(System.in);
@@ -155,12 +173,14 @@ public class Tasks {
         LOGGER.info(GOODBYE_MESSAGE);
     }
 
-    /**
+    */
+/**
      * Build a fleet reading ships from the provided scanner.
      *
      * @param in the scanner to read ship data from
      * @return constructed Fleet
-     */
+     *//*
+
     static Fleet buildFleet(Scanner in) {
         assert in != null;
 
@@ -183,12 +203,14 @@ public class Tasks {
         return fleet;
     }
 
-    /**
+    */
+/**
      * Read a ship specification from the scanner and create it.
      *
      * @param in input scanner
      * @return created Ship or null when unknown
-     */
+     *//*
+
     static Ship readShip(Scanner in) {
         String shipKind = in.next();
         Position pos = readPosition(in);
@@ -197,24 +219,28 @@ public class Tasks {
         return Ship.buildShip(shipKind, bearing, pos);
     }
 
-    /**
+    */
+/**
      * Read a position (two integers) from the scanner.
      *
      * @param in scanner to read from
      * @return created Position
-     */
+     *//*
+
     static Position readPosition(Scanner in) {
         int row = in.nextInt();
         int column = in.nextInt();
         return new Position(row, column);
     }
 
-    /**
+    */
+/**
      * Fire a fixed number of shots (round) using the provided game.
      *
      * @param in   scanner for input coordinates
      * @param game game instance used to fire shots
-     */
+     *//*
+
     static void firingRound(Scanner in, IGame game) {
         for (int i = 0; i < NUMBER_SHOTS; i++) {
             IPosition pos = readPosition(in);
@@ -225,4 +251,4 @@ public class Tasks {
 
     }
 
-}
+}*/
